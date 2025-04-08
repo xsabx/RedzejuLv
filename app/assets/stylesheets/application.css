@@ -3,12 +3,18 @@
 body {
   margin: 0;
   font-family: 'Inter', Arial, sans-serif; 
+
+  background-image: url('/assets/teatris.jpg'); /* vai 'background.jpg' ja tas ir assets/images */
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed; /* <- bilde stāv uz vietas */
+  background-position: center center;
 }
 
 /* Classes, parameters for header displaying */
 .header {
   overflow: hidden;
-  background-color: #55679C;
+  background-color: #1f2123;
   padding: 20px 10px;
 }
 
@@ -60,12 +66,12 @@ body {
 }
 
 .btn-primary {
-  background-color: #1E2A5E;
+  background-color: #5f0e0e;
   border: none;
 }
 
 .btn-primary:hover {
-  background-color: #0056b3;
+  background-color: #5e1e1e;
 }
 
 .btn-secondary {

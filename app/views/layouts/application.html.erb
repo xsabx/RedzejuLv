@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Redzēju.lv</title>
+    <title>Redzeju.lv</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
@@ -14,7 +14,7 @@
   <body>
     <!-- Navigācijas galvene -->
     <header class="header">
-      <a href="/" class="logo">Redzēju.lv</a>
+      <a href="/" class="logo">Redzeju.lv</a>
       <div class="header-right navbar-links">
         <% if user_signed_in? %>
           <%= link_to 'Redzētās izrādes', seen_performances_path, class: 'btn btn-primary active' %>

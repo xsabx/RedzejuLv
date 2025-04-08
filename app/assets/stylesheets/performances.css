@@ -51,13 +51,13 @@
     text-decoration: none;
     color: white;
     font-weight: bold;
-    background-color: #1E2A5E;
+    background-color: #5f0e0e;
     border: none;
     font-size: 1.1rem; 
 }
 
 .btn-seen:hover {
-    background-color: #0056b3;
+    background-color: #5e1e1e;
 }
 
 
@@ -134,9 +134,9 @@
 
 .search-button {
     padding: 10px 20px;
-    background-color: #1E2A5E;
+    background-color: #5f0e0e;
     color: white;
-    border: 1px solid #1E2A5E;
+    border: 1px solid #5f0e0e;
     border-radius: 0 8px 8px 0;
     font-size: 16px;
     font-weight: bold;
@@ -145,7 +145,7 @@
 }
 
 .search-button:hover {
-    background-color: #0056b3;
+    background-color: #5e1e1e;
 }
 
 /* Class for bike image displaying */
