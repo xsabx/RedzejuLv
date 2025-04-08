@@ -1,0 +1,48 @@
+<%= stylesheet_link_tag 'performances', media: 'all' %>
+
+<h1 class="text-center">Izrādes</h1>
+<p class="text-center">Meklē vai filtrē izrādes pēc datuma, nosaukuma vai teātra. Atzīmē tās, kuras esi redzējis!</p>
+
+<!-- Form for filtering by date -->
+<div class="form-container form-card">
+  <%= form_with url: performances_path, method: :get, local: true, class: "form-inline" do %>
+    <div class="form-group">
+      <label for="date">Izrādes datums:</label>
+      <%= date_field_tag :date, @date, class: "form-control" %>
+      <%= submit_tag 'Filtrēt pēc datuma', class: "btn btn-primary" %>
+    </div>
+  <% end %>
+</div>
+
+<!-- Form for searching by title, theater or description -->
+<div class="search-container">
+  <%= form_with url: performances_path, method: :get, local: true, class: "search-form" do %>
+    <%= text_field_tag :search, params[:search], placeholder: "Meklēt izrādes...", class: "search-input" %>
+    <%= hidden_field_tag :date, @date %>
+    <%= submit_tag "Meklēt", class: "search-button" %>
+  <% end %>
+</div>
+
+<!-- Display performance cards -->
+<% if @performances.any? %>
+  <% @performances.each do |performance| %>
+    <div class="performance-card">
+      <% if performance.poster.attached? %>
+        <%= image_tag performance.poster, class: "performance-image" %>
+      <% end %>
+
+      <div class="performance-info">
+        <h2><%= performance.title %></h2>
+        <p><strong>Teātris:</strong> <%= performance.theater %></p>
+        <p><strong>Laiks:</strong> <%= l performance.performed_at, format: :long %></p>
+        <p><%= performance.description %></p>
+      </div>
+
+      <div class="performance-action">
+        <%= link_to 'Atzīmēt kā redzētu', mark_seen_performance_path(performance), class: "btn btn-seen" %>
+      </div>
+    </div>
+  <% end %>
+<% else %>
+  <p class="text-center">Nav atrastas nevienas izrādes šiem kritērijiem.</p>
+<% end %>

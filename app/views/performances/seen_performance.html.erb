@@ -1,0 +1,28 @@
+<%= stylesheet_link_tag 'performances', media: 'all' %>
+
+<h1 class="text-center">Atzīmēt kā redzētu: <%= @performance.title %></h1>
+
+<!-- Parāda izrādes attēlu -->
+<div class="text-center">
+  <% if @performance.poster.attached? %>
+    <%= image_tag @performance.poster, class: "performance-image-large" %>
+  <% else %>
+    <p>Nav pievienots plakāts</p>
+  <% end %>
+</div>
+
+<!-- Forma izrādes atzīmēšanai kā redzētas -->
+<div class="form-container form-card">
+  <%= form_with url: save_seen_performance_path(@performance), method: :post, local: true, class: "form-inline", id: "seen-performance-form" do %>
+    <div class="form-group">
+      <label for="seen_at">Kad redzēji šo izrādi?</label>
+      <%= date_field_tag :seen_at, @seen_at || Date.today.to_s, class: "form-control", required: true %>
+
+      <%= submit_tag 'Atzīmēt kā redzētu', class: "btn btn-primary" %>
+    </div>
+  <% end %>
+</div>
+
+<div class="back-button">
+  <%= link_to 'Atpakaļ', performances_path, class: "btn btn-secondary" %>
+</div>

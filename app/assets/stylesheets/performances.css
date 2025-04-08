@@ -1,5 +1,5 @@
 /* Classes, parameters for bike card displaying */
-.bike-card {
+.performance-card {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -14,12 +14,12 @@
     transition: transform 0.3s, box-shadow 0.3s; 
 }
 
-.bike-card:hover {
+.performance-card:hover {
     transform: translateY(-5px); 
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); 
 }
 
-.bike-image {
+.performance-image {
     width: 150px;
     height: 150px;
     object-fit: cover; 
@@ -27,12 +27,12 @@
     border-radius: 5px;
 }
 
-.bike-info {
+.performance-info {
     max-width: 60%; 
     flex-grow: 1; 
 }
 
-.bike-action {
+.performance-action {
     text-align: right;
     flex-grow: 0; 
     display: flex;
@@ -40,12 +40,12 @@
     margin-left: auto; 
 }
 
-.bike-card h2 {
+.performance-card h2 {
     margin-top: 0;
     color: #333; 
 }
 
-.btn-rent {
+.btn-seen {
     padding: 12px 24px; 
     border-radius: 4px;
     text-decoration: none;
@@ -56,7 +56,7 @@
     font-size: 1.1rem; 
 }
 
-.btn-rent:hover {
+.btn-seen:hover {
     background-color: #0056b3;
 }
 
@@ -149,7 +149,7 @@
 }
 
 /* Class for bike image displaying */
-.bike-image-large {
+.performance-image-large {
     width: 200px; 
     height: auto; 
     object-fit: cover;  

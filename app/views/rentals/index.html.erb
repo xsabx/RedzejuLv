@@ -1,24 +1,26 @@
-<%= stylesheet_link_tag 'bikes', media: 'all' %>
+<%= stylesheet_link_tag 'performances', media: 'all' %>
 
-<h1 class="text-center">Your Rentals</h1>
+<h1 class="text-center">Tavas redzētās izrādes</h1>
 
-<!-- Display bike card of bikes that are rented (with date) -->
-<div class="rentals-container">
-  <% @rentals.each do |rental| %>
-    <div class="bike-card">
-      <% if rental.bike.image.attached? %>
-        <%= image_tag rental.bike.image, class: "bike-image" %>
+<!-- Parāda redzēto izrāžu kartītes -->
+<div class="performances-container">
+  <% @seen_performances.each do |seen| %>
+    <div class="performance-card">
+      <% if seen.performance.poster.attached? %>
+        <%= image_tag seen.performance.poster, class: "performance-image" %>
       <% else %>
-        <p>No image available</p>
+        <p>Nav attēla</p>
       <% end %>
 
-      <div class="bike-info">
-        <h2><%= rental.bike.name %></h2>
-        <p>Rented from <%= rental.start_date.strftime("%B %d, %Y") %> to <%= rental.end_date.strftime("%B %d, %Y") %></p>
+      <div class="performance-info">
+        <h2><%= seen.performance.title %></h2>
+        <p><strong>Teātris:</strong> <%= seen.performance.theater %></p>
+        <p><strong>Redzēta:</strong> <%= seen.seen_at.strftime("%Y. gada %-d. %B") %></p>
       </div>
-      <div class="bike-action">
-        <%= link_to 'Cancel Rental', rental_path(rental), 
-                    data: { turbo_method: :delete, turbo_confirm: 'Are you sure?' }, 
+
+      <div class="performance-action">
+        <%= link_to 'Noņemt no saraksta', seen_performance_path(seen), 
+                    data: { turbo_method: :delete, turbo_confirm: 'Vai tiešām vēlies dzēst šo ierakstu?' }, 
                     class: "btn btn-danger" %>
       </div>
     </div>
@@ -26,5 +28,5 @@
 </div>
 
 <div class="back-button">
-  <%= link_to 'Back', root_path, class: "btn btn-secondary" %>
+  <%= link_to 'Atpakaļ', performances_path, class: "btn btn-secondary" %>
 </div>

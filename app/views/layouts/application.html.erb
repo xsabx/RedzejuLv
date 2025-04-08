@@ -1,34 +1,41 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>BikeRentalWebApp</title>
+    <title>Redzēju.lv</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
+
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
     <%= hotwire_livereload_tags if Rails.env.development? %>
   </head>
 
   <body>
-    <!-- Header appearance depending on if user is or is not signed in -->
+    <!-- Navigācijas galvene -->
     <header class="header">
-      <a href="/" class="logo">BikeRental.</a>
+      <a href="/" class="logo">Redzēju.lv</a>
       <div class="header-right navbar-links">
         <% if user_signed_in? %>
-          <%= link_to 'My Rentals', rentals_path, class: 'btn btn-primary active' %>
-          <%= link_to 'Profile', edit_user_registration_path, class: 'btn btn-primary active' %>
-          <%= link_to 'Sign Out', destroy_user_session_path, method: :delete, data: { turbo_method: :delete, turbo_frame: "_top" }, class: 'btn btn-danger active' %>
+          <%= link_to 'Redzētās izrādes', seen_performances_path, class: 'btn btn-primary active' %>
+          <%= link_to 'Profils', edit_user_registration_path, class: 'btn btn-primary active' %>
+          <%= link_to 'Izrakstīties', destroy_user_session_path, method: :delete, data: { turbo_method: :delete, turbo_frame: "_top" }, class: 'btn btn-danger active' %>
         <% else %>
-          <%= link_to 'Sign In', new_user_session_path, class: 'btn btn-primary active' %>
-          <%= link_to 'Sign Up', new_user_registration_path, class: 'btn btn-primary active' %>
+          <%= link_to 'Ieiet', new_user_session_path, class: 'btn btn-primary active' %>
+          <%= link_to 'Reģistrēties', new_user_registration_path, class: 'btn btn-primary active' %>
         <% end %>
       </div>
     </header>
-    
+
+    <!-- Flash ziņojumi -->
     <main>
-      <p class="notice"><%= notice %></p>
-      <p class="alert"><%= alert %></p>
+      <% if notice %>
+        <p class="notice"><%= notice %></p>
+      <% end %>
+      <% if alert %>
+        <p class="alert"><%= alert %></p>
+      <% end %>
+
       <%= yield %>
     </main>
   </body>

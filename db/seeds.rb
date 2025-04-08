@@ -1,24 +1,20 @@
 max_retries = 3
 retries = 0
+
 begin
-  Bike.transaction do
-    bikes = Bike.create!([
-      { name: 'Revel Rascal XO Transmission', bike_type: 'Mountain', frame_size: 'Large' },
-      { name: 'Yeti SB140 LR T2 TURQ', bike_type: 'Mountain', frame_size: 'Medium' },
-      { name: 'Merida Reacto 4000', bike_type: 'Road', frame_size: 'Large' },
-      { name: 'Specialized Sirrus X 4.0', bike_type: 'Hybrid', frame_size: 'Small' },
-      { name: 'Gazelle Medeo T10 HMB', bike_type: 'Electric', frame_size: 'Medium' },
-      { name: 'Liv Lurra 29', bike_type: 'Mountain', frame_size: 'Small' },
-      { name: 'Giant TCR Advanced Pro 2', bike_type: 'Road', frame_size: 'Large' },
-      { name: 'Whyte Rheo 1 V1', bike_type: 'Hybrid', frame_size: 'Medium' },
-      { name: 'Gazelle Ultimate C380 HMB', bike_type: 'Electric', frame_size: 'Medium' },
-      { name: 'Ultimate CF SL 7 AXS', bike_type: 'Road', frame_size: 'Small' }
+  Performance.transaction do
+    performances = Performance.create!([
+      { title: 'Hamlets', theater: 'Dailes teātris', description: 'Klasiska Šekspīra traģēdija par atriebību, mīlestību un nodevību.', performed_at: '2025-04-01 19:00' },
+      { title: 'Skroderdienas Silmačos', theater: 'Nacionālais teātris', description: 'Latviešu komēdija par dzīvi laukos un precībām.', performed_at: '2025-04-03 18:30' },
+      { title: 'Pūt, vējiņi!', theater: 'Liepājas teātris', description: 'Dramatiska izrāde par latviešu tautas likteni.', performed_at: '2025-04-05 20:00' },
+      { title: 'Fausts', theater: 'Dailes teātris', description: 'Stāsts par cilvēka alkām pēc zināšanām un spēka.', performed_at: '2025-04-07 19:00' },
+      { title: 'Zelta zirgs', theater: 'Valmieras teātris', description: 'Latviešu pasaka par drosmi, cīņu un mīlestību.', performed_at: '2025-04-09 17:00' }
     ])
-    
-    bikes.each_with_index do |bike, index|
-      bike.image.attach(
-        io: File.open(Rails.root.join('app/assets/images', "bike#{index+1}.jpg")),
-        filename: "bike#{index+1}.jpg",
+
+    performances.each_with_index do |performance, index|
+      performance.poster.attach(
+        io: File.open(Rails.root.join('app/assets/images', "izrade#{index + 1}.jpg")),
+        filename: "izrade#{index + 1}.jpg",
         content_type: 'image/jpeg'
       )
     end

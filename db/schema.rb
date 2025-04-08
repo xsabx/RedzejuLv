@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_11_04_105028) do
+ActiveRecord::Schema[7.1].define(version: 2024_08_31_204221) do
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
     t.string "record_type", null: false
@@ -39,23 +39,23 @@ ActiveRecord::Schema[7.1].define(version: 2024_11_04_105028) do
     t.index ["blob_id", "variation_digest"], name: "index_active_storage_variant_records_uniqueness", unique: true
   end
 
-  create_table "bikes", force: :cascade do |t|
-    t.string "name"
-    t.string "bike_type"
-    t.string "frame_size"
+  create_table "performances", force: :cascade do |t|
+    t.string "title"
+    t.string "theater"
+    t.text "description"
+    t.datetime "performed_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
-  create_table "rentals", force: :cascade do |t|
+  create_table "seen_performances", force: :cascade do |t|
     t.integer "user_id", null: false
-    t.integer "bike_id", null: false
-    t.datetime "start_date"
-    t.datetime "end_date"
+    t.integer "performance_id", null: false
+    t.datetime "seen_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["bike_id"], name: "index_rentals_on_bike_id"
-    t.index ["user_id"], name: "index_rentals_on_user_id"
+    t.index ["performance_id"], name: "index_seen_performances_on_performance_id"
+    t.index ["user_id"], name: "index_seen_performances_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -66,13 +66,12 @@ ActiveRecord::Schema[7.1].define(version: 2024_11_04_105028) do
     t.datetime "remember_created_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.boolean "admin"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
-  add_foreign_key "rentals", "bikes"
-  add_foreign_key "rentals", "users"
+  add_foreign_key "seen_performances", "performances"
+  add_foreign_key "seen_performances", "users"
 end
