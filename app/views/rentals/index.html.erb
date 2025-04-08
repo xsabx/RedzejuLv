@@ -1,0 +1,30 @@
+<%= stylesheet_link_tag 'bikes', media: 'all' %>
+
+<h1 class="text-center">Your Rentals</h1>
+
+<!-- Display bike card of bikes that are rented (with date) -->
+<div class="rentals-container">
+  <% @rentals.each do |rental| %>
+    <div class="bike-card">
+      <% if rental.bike.image.attached? %>
+        <%= image_tag rental.bike.image, class: "bike-image" %>
+      <% else %>
+        <p>No image available</p>
+      <% end %>
+
+      <div class="bike-info">
+        <h2><%= rental.bike.name %></h2>
+        <p>Rented from <%= rental.start_date.strftime("%B %d, %Y") %> to <%= rental.end_date.strftime("%B %d, %Y") %></p>
+      </div>
+      <div class="bike-action">
+        <%= link_to 'Cancel Rental', rental_path(rental), 
+                    data: { turbo_method: :delete, turbo_confirm: 'Are you sure?' }, 
+                    class: "btn btn-danger" %>
+      </div>
+    </div>
+  <% end %>
+</div>
+
+<div class="back-button">
+  <%= link_to 'Back', root_path, class: "btn btn-secondary" %>
+</div>

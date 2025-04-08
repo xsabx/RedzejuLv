@@ -1,0 +1,50 @@
+<%= stylesheet_link_tag 'bikes', media: 'all' %>
+
+<h1 class="text-center">Available Bikes</h1>
+<p class="text-center">Select the dates for your bike rental by choosing a start and end date. This will show you the available bikes for your chosen period!</p>
+
+<!-- Form for finding available bikes in specific period -->
+<div class="form-container form-card">
+  <%= form_with url: bikes_path, method: :get, local: true, class: "form-inline" do %>
+    <div class="form-group">
+      <label for="start_date">Start Date:</label>
+      <%= date_field_tag :start_date, @start_date, class: "form-control", required: true, min: Date.today.to_s %>
+      <label for="end_date">End Date:</label>
+      <%= date_field_tag :end_date, @end_date, class: "form-control", required: true, min: Date.today.to_s %>
+      <%= submit_tag 'Check Availability', class: "btn btn-primary" %>
+    </div>
+  <% end %>
+</div>
+
+<!-- Form for searching bikes by name, type, or frame size -->
+<div class="search-container">
+  <%= form_with url: bikes_path, method: :get, local: true, class: "search-form" do %>
+    <%= text_field_tag :search, params[:search], placeholder: "Search bikes...", class: "search-input" %>
+    
+    <!-- Add hidden fields to retain start_date and end_date -->
+    <%= hidden_field_tag :start_date, @start_date %>
+    <%= hidden_field_tag :end_date, @end_date %>
+    
+    <%= submit_tag "Search", class: "search-button" %>
+  <% end %>
+</div>
+
+
+<!-- displays bike details -->
+<% if @bikes.any? %>
+  <% @bikes.each do |bike| %>
+    <div class="bike-card">
+      <%= image_tag bike.image, class: "bike-image" if bike.image.attached? %>
+      <div class="bike-info">
+        <h2><%= bike.name %></h2>
+        <p>Type: <%= bike.bike_type %></p>
+        <p>Frame Size: <%= bike.frame_size %></p>
+      </div>
+      <div class="bike-action">
+        <%= link_to 'Rent', rent_bike_path(bike), class: "btn btn-rent" %>
+      </div>
+    </div>
+  <% end %>
+<% else %>
+  <p>No bikes available during the selected time frame.</p>
+<% end %>

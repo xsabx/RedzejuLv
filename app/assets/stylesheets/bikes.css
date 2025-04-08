@@ -1,0 +1,160 @@
+/* Classes, parameters for bike card displaying */
+.bike-card {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #ffffff; 
+    border: 1px solid #dee2e6; 
+    border-radius: 8px;
+    padding: 20px; 
+    margin-bottom: 25px; 
+    margin-left: 15px; 
+    margin-right: 15px; 
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
+    transition: transform 0.3s, box-shadow 0.3s; 
+}
+
+.bike-card:hover {
+    transform: translateY(-5px); 
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); 
+}
+
+.bike-image {
+    width: 150px;
+    height: 150px;
+    object-fit: cover; 
+    margin-right: 20px;
+    border-radius: 5px;
+}
+
+.bike-info {
+    max-width: 60%; 
+    flex-grow: 1; 
+}
+
+.bike-action {
+    text-align: right;
+    flex-grow: 0; 
+    display: flex;
+    justify-content: flex-end; 
+    margin-left: auto; 
+}
+
+.bike-card h2 {
+    margin-top: 0;
+    color: #333; 
+}
+
+.btn-rent {
+    padding: 12px 24px; 
+    border-radius: 4px;
+    text-decoration: none;
+    color: white;
+    font-weight: bold;
+    background-color: #1E2A5E;
+    border: none;
+    font-size: 1.1rem; 
+}
+
+.btn-rent:hover {
+    background-color: #0056b3;
+}
+
+
+/* To center text if needed */
+.text-center {
+    text-align: center;
+    color: #333;
+  }
+
+/* Classes, parameters for availability form (by date) */
+.form-card {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #ffffff; 
+    border: 1px solid #dee2e6; 
+    border-radius: 8px;
+    padding: 10px; 
+    margin: 20px auto; 
+    transition: transform 0.3s, box-shadow 0.3s;
+    flex-direction: column; 
+    max-width: 600px; 
+    width: 100%; 
+}
+
+.form-group {
+    display: flex;
+    align-items: center;
+}
+
+.form-group label {
+    margin-right: 10px;
+    font-weight: bold; 
+}
+
+.form-group .form-control {
+    margin-right: 15px; 
+}
+
+.btn {
+    height: fit-content;
+    margin-top: 0; 
+}
+
+/* Classes, parameters for search bar */
+.search-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 30px;
+    margin-bottom: 40px;
+}
+
+.search-form {
+    display: flex;
+    flex-grow: 1;
+    max-width: 800px;
+}
+
+.search-input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #dee2e6;
+    border-radius: 8px 0 0 8px;
+    font-size: 16px;
+    box-sizing: border-box;
+    outline: none;
+    transition: border-color 0.3s ease;
+}
+
+.search-input:focus {
+    border-color: #1E2A5E;
+}
+
+.search-button {
+    padding: 10px 20px;
+    background-color: #1E2A5E;
+    color: white;
+    border: 1px solid #1E2A5E;
+    border-radius: 0 8px 8px 0;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.search-button:hover {
+    background-color: #0056b3;
+}
+
+/* Class for bike image displaying */
+.bike-image-large {
+    width: 200px; 
+    height: auto; 
+    object-fit: cover;  
+    margin-top: 10px; 
+    margin-bottom: 10px; 
+}
+
+  

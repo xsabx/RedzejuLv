@@ -1,0 +1,106 @@
+/* Classes, parameters for views made with devise */
+.devise-container {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start; 
+    height: 100vh; 
+    padding-top: 60px; 
+    width: 100%;
+    box-sizing: border-box; 
+}
+
+.devise-card {
+    background-color: #ffffff; 
+    border: 1px solid #dee2e6; 
+    border-radius: 8px;
+    padding: 20px; 
+    margin: 0 15px 25px 15px; 
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
+    max-width: 400px; 
+    width: 100%; 
+    transition: box-shadow 0.3s; 
+    text-align: center; 
+}
+
+.devise-card h2 {
+    margin-top: 0;
+    margin-bottom: 20px; 
+    color: #333; 
+    font-size: 2rem; 
+}
+
+.devise-card .field {
+    margin-bottom: 15px; 
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start; 
+}
+
+.devise-card .field label {
+    width: 100%; 
+    margin-bottom: 5px; 
+    text-align: left; 
+}
+
+.devise-card .field input {
+    width: 100%; 
+    padding: 8px;
+    box-sizing: border-box;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+    margin-bottom: 10px; 
+}
+
+.devise-card .links {
+    text-align: center;
+    padding: 20px; 
+}
+
+.devise-card .actions {
+    text-align: center; 
+}
+
+/* Button styling */
+.devise-card .btn-primary,
+.devise-card .btn-danger {
+    padding: 8px 16px; 
+    border-radius: 4px;
+    text-decoration: none;
+    color: white;
+    font-weight: bold;
+    border: none;
+    font-size: 1rem; 
+    width: auto; 
+    display: inline-block; 
+    margin: 0 auto; 
+}
+
+.devise-card .btn-primary {
+    background-color: #1E2A5E;
+}
+
+.devise-card .btn-primary:hover {
+    background-color: #0056b3;
+}
+
+.devise-card .btn-danger {
+    background-color: #ee606e;
+}
+
+.devise-card .btn-danger:hover {
+    background-color: #c82333;
+}
+
+
+.devise-card .links a {
+    color: #6c757d;
+    text-decoration: none;
+    font-size: 1rem;
+    display: block; 
+}
+
+
+.devise-card .links a:hover {
+    text-decoration: underline;
+}
