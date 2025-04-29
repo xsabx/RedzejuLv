@@ -1,5 +1,5 @@
 class PerformancesController < ApplicationController
-  before_action :authenticate_user!, only: [:mark_seen, :save_seen]
+  before_action :authenticate_user!, only: [:mark_seen, :save_seen, :save_review]
 
   def index
     # Iegūst filtrēšanas datumu (ja nepieciešams) vai visu sarakstu
@@ -34,6 +34,8 @@ class PerformancesController < ApplicationController
   def mark_seen
     @performance = Performance.find(params[:id])
     @seen_at = Date.today.to_s
+    @existing_review = current_user.reviews.find_by(performance: @performance)
+    @other_reviews = @performance.reviews.where.not(user: current_user).includes(:user).order(created_at: :desc)
   end
 
   # Saglabā, ka lietotājs ir redzējis izrādi
@@ -43,17 +45,36 @@ class PerformancesController < ApplicationController
 
     if seen_at.blank?
       redirect_to mark_seen_performance_path(@performance), alert: "Lūdzu, ievadi redzēšanas datumu."
-    else
-      seen = current_user.seen_performances.new(
-        performance: @performance,
-        seen_at: seen_at
-      )
+      return
+    end
 
-      if seen.save
-        redirect_to performances_path, notice: "Izrāde atzīmēta kā redzēta."
-      else
-        redirect_to mark_seen_performance_path(@performance), alert: seen.errors.full_messages.to_sentence
-      end
+    seen = current_user.seen_performances.new(
+      performance: @performance,
+      seen_at: seen_at
+    )
+
+    if seen.save
+      redirect_to mark_seen_performance_path(@performance), notice: "Izrāde atzīmēta kā redzēta."
+    else
+      redirect_to mark_seen_performance_path(@performance), alert: seen.errors.full_messages.to_sentence
+    end
+  end
+
+  # Saglabā lietotāja atsauksmi
+  def save_review
+    @performance = Performance.find(params[:id])
+    
+    review = current_user.reviews.new(
+      performance: @performance,
+      content: params[:review],
+      rating: params[:rating],
+      seen_at: params[:seen_at]
+    )
+
+    if review.save
+      redirect_to mark_seen_performance_path(@performance), notice: "Atsauksme saglabāta."
+    else
+      redirect_to mark_seen_performance_path(@performance), alert: review.errors.full_messages.to_sentence
     end
   end
 end

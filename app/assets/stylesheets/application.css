@@ -106,5 +106,65 @@ body {
   margin-left: 20px; /* Adds a gap from the left side */
 }
 
+/* Side menu styles */
+.side-menu {
+  height: 100%;
+  width: 0;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  right: 0;
+  background-color: #1f2123;
+  overflow-x: hidden;
+  transition: 0.5s;
+  padding-top: 60px;
+}
+
+.side-menu a {
+  padding: 8px 8px 8px 32px;
+  text-decoration: none;
+  font-size: 25px;
+  color: #818181;
+  display: block;
+  transition: 0.3s;
+}
+
+.side-menu a:hover {
+  color: #f1f1f1;
+}
+
+.side-menu .closebtn {
+  position: absolute;
+  top: 0;
+  right: 25px;
+  font-size: 36px;
+  margin-left: 50px;
+}
+
+.menu-button {
+  font-size: 30px;
+  cursor: pointer;
+  background: none;
+  border: none;
+  color: white;
+  padding: 10px;
+  margin-right: 20px;
+}
+
+.menu-button:hover {
+  color: #f1f1f1;
+}
+
+/* Add padding to body when menu is open */
+body.menu-open {
+  padding-right: 250px;
+}
+
+/* Adjust header for menu button */
+.header-right {
+  display: flex;
+  align-items: center;
+}
+
 
 

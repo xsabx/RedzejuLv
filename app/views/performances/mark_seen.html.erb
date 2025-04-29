@@ -1,25 +1,86 @@
 <%= stylesheet_link_tag 'performances', media: 'all' %>
 
-<h1 class="text-center">Atzīmēt kā redzētu: <%= @performance.title %></h1>
+<h1 class="text-center">Informācija par izrādi </h1>
 
-<!-- Parāda izrādes attēlu -->
-<div class="text-center">
-  <% if @performance.poster.attached? %>
-    <%= image_tag @performance.poster, class: "performance-image-large" %>
-  <% else %>
-    <p>Nav pievienots plakāts</p>
-  <% end %>
+<!-- Performance details container -->
+<div class="performance-details-container">
+  <!-- Parāda izrādes attēlu -->
+  <div class="performance-poster">
+    <% if @performance.poster.attached? %>
+      <%= image_tag @performance.poster, class: "performance-image-large" %>
+    <% else %>
+      <p>Nav pievienots plakāts</p>
+    <% end %>
+  </div>
+
+  <!-- Izrādes informācija -->
+  <div class="form-card performance-info-card">
+    <h2><%= @performance.title %></h2>
+    
+    <!-- Forma izrādes atzīmēšanai -->
+    <%= form_with url: save_seen_performance_path(@performance), method: :post, local: true, class: "seen-date-form", id: "seen-performance-form" do %>
+      <div class="form-group">
+        <label for="seen_at">Kad redzēji šo izrādi?</label>
+        <%= date_field_tag :seen_at, @seen_at || Date.today.to_s, class: "form-control", required: true %>
+        <%= submit_tag 'Atzīmēt kā redzētu', class: "btn btn-primary" %>
+      </div>
+    <% end %>
+
+    <p><strong>Teātris:</strong> <%= @performance.theater %></p>
+    <p><strong>Apraksts:</strong> <%= @performance.description %></p>
+
+    <% if @existing_review %>
+      <!-- Parāda esošo atsauksmi -->
+      <div class="review-section">
+        <h3>Tava atsauksme</h3>
+        <div class="existing-review">
+          <p><strong>Novērtējums:</strong> <%= pluralize(@existing_review.rating, 'zvaigzne', 'zvaigznes') %></p>
+          <p><strong>Atsauksme:</strong> <%= @existing_review.content %></p>
+        </div>
+      </div>
+    <% else %>
+      <!-- Atsauksmes forma -->
+      <div class="review-section">
+        <h3>Tava atsauksme</h3>
+        <%= form_with url: save_review_performance_path(@performance), method: :post, local: true do %>
+          <div class="form-group">
+            <label for="rating">Novērtējums (1-5 zvaigznes)</label>
+            <%= select_tag :rating, options_for_select((1..5).map { |n| [pluralize(n, 'zvaigzne', 'zvaigznes'), n] }), class: "form-control", required: true %>
+          </div>
+
+          <div class="form-group">
+            <label for="review">Tava atsauksme</label>
+            <%= text_area_tag :review, nil, class: "form-control review-textarea", placeholder: "Uzraksti savas domas par izrādi...", required: true %>
+          </div>
+
+          <%= hidden_field_tag :seen_at, @seen_at || Date.today.to_s %>
+          <%= submit_tag 'Saglabāt atsauksmi', class: "btn btn-primary" %>
+        <% end %>
+      </div>
+    <% end %>
+  </div>
 </div>
 
-<!-- Forma izrādes atzīmēšanai kā redzētas -->
-<div class="form-container form-card">
-  <%= form_with url: save_seen_performance_path(@performance), method: :post, local: true, class: "form-inline", id: "seen-performance-form" do %>
-    <div class="form-group">
-      <label for="seen_at">Kad redzēji šo izrādi?</label>
-      <%= date_field_tag :seen_at, @seen_at || Date.today.to_s, class: "form-control", required: true %>
-
-      <%= submit_tag 'Atzīmēt kā redzētu', class: "btn btn-primary" %>
-    </div>
+<!-- Other users' reviews -->
+<div class="other-reviews-container">
+  <h2 class="text-center">Citu lietotāju atsauksmes</h2>
+  <% if @other_reviews.any? %>
+    <% @other_reviews.each do |review| %>
+      <div class="review-card">
+        <div class="review-header">
+          <span class="reviewer-name"><%= review.user.email %></span>
+          <span class="review-date"><%= l review.created_at, format: :long %></span>
+        </div>
+        <div class="review-rating">
+          <%= pluralize(review.rating, 'zvaigzne', 'zvaigznes') %>
+        </div>
+        <div class="review-content">
+          <%= review.content %>
+        </div>
+      </div>
+    <% end %>
+  <% else %>
+    <p class="text-center">Vēl nav nevienas atsauksmes par šo izrādi.</p>
   <% end %>
 </div>
 

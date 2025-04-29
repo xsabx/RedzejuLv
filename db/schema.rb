@@ -48,6 +48,18 @@ ActiveRecord::Schema[7.1].define(version: 2025_04_08_175437) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "reviews", force: :cascade do |t|
+    t.integer "user_id", null: false
+    t.integer "performance_id", null: false
+    t.text "content"
+    t.integer "rating"
+    t.datetime "seen_at"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["performance_id"], name: "index_reviews_on_performance_id"
+    t.index ["user_id"], name: "index_reviews_on_user_id"
+  end
+
   create_table "seen_performances", force: :cascade do |t|
     t.integer "user_id", null: false
     t.integer "performance_id", null: false
@@ -72,6 +84,8 @@ ActiveRecord::Schema[7.1].define(version: 2025_04_08_175437) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "reviews", "performances"
+  add_foreign_key "reviews", "users"
   add_foreign_key "seen_performances", "performances"
   add_foreign_key "seen_performances", "users"
 end

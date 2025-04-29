@@ -5,6 +5,7 @@ Rails.application.routes.draw do
     member do
       get 'mark_seen'
       post 'save_seen'
+      post 'save_review'
     end
   end
 

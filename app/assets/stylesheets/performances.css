@@ -65,7 +65,7 @@
 .text-center {
     text-align: center;
     color: #ffffff;
-  }
+}
 
 /* Classes, parameters for availability form (by date) */
 .form-card {
@@ -78,23 +78,26 @@
     padding: 10px; 
     margin: 20px auto; 
     transition: transform 0.3s, box-shadow 0.3s;
-    flex-direction: column; 
-    max-width: 600px; 
     width: 100%; 
+    max-width: 600px;
 }
 
-.form-group {
+.form-card .form-group {
     display: flex;
     align-items: center;
+    justify-content: center;
+    gap: 15px;
+    width: 100%;
 }
 
-.form-group label {
+.form-card label {
     margin-right: 10px;
-    font-weight: bold; 
+    font-weight: bold;
+    white-space: nowrap;
 }
 
-.form-group .form-control {
-    margin-right: 15px; 
+.form-card .form-control {
+    margin-right: 15px;
 }
 
 .btn {
@@ -155,6 +158,273 @@
     object-fit: cover;  
     margin-top: 10px; 
     margin-bottom: 10px; 
+}
+
+/* Performance info card styles */
+.performance-info-card {
+    background-color: #ffffff;
+    padding: 20px;
+    margin: 20px auto;
+    max-width: 600px;
+    text-align: left;
+}
+
+.performance-info-card h2 {
+    color: #333;
+    margin-top: 0;
+    margin-bottom: 15px;
+    font-size: 1.8rem;
+    text-align: center;
+    width: 100%;
+}
+
+.performance-info-card p {
+    margin: 10px 0;
+    color: #555;
+    line-height: 1.5;
+}
+
+.performance-info-card strong {
+    color: #333;
+    font-weight: 600;
+}
+
+/* Performance details container */
+.performance-details-container {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 30px;
+    margin: 20px auto;
+    max-width: 1000px;
+    padding: 0 20px;
+}
+
+.performance-poster {
+    flex: 0 0 auto;
+}
+
+.performance-image-large {
+    width: 300px;
+    height: auto;
+    object-fit: cover;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Performance info card styles */
+.performance-info-card {
+    flex: 1;
+    background-color: #ffffff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: left;
+    min-width: 300px;
+}
+
+.performance-info-card h2 {
+    color: #333;
+    margin-top: 0;
+    margin-bottom: 15px;
+    font-size: 1.8rem;
+}
+
+.performance-info-card p {
+    margin: 10px 0;
+    color: #555;
+    line-height: 1.5;
+}
+
+.performance-info-card strong {
+    color: #333;
+    font-weight: 600;
+}
+
+/* Seen date form styles */
+.seen-date-form {
+    margin: 15px 0;
+}
+
+.seen-date-form .form-group {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 20px;
+    width: 100%;
+}
+
+.seen-date-form label {
+    color: #333;
+    font-weight: 600;
+    font-size: 1.1rem;
+    white-space: nowrap;
+}
+
+.seen-date-form .form-control {
+    width: 200px;
+    padding: 8px;
+    border: 1px solid #dee2e6;
+    border-radius: 4px;
+}
+
+.seen-date-form .btn-primary {
+    margin: 0;
+    padding: 8px 16px;
+    height: 38px;
+}
+
+/* Review section styles */
+.review-section {
+    margin-top: 30px;
+    padding-top: 20px;
+    border-top: 1px solid #dee2e6;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+}
+
+.review-section h3 {
+    color: #333;
+    margin-top: 0;
+    margin-bottom: 20px;
+    font-size: 1.4rem;
+    text-align: center;
+    width: 100%;
+}
+
+.review-section form {
+    width: 100%;
+    max-width: 400px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.review-section .form-group {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.review-section label {
+    color: #333;
+    font-weight: 600;
+    font-size: 1.1rem;
+    margin-bottom: 8px;
+}
+
+.review-section .form-control {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #dee2e6;
+    border-radius: 4px;
+}
+
+.review-section .review-textarea {
+    min-height: 120px;
+    resize: vertical;
+}
+
+.review-section .btn-primary {
+    width: 100%;
+    padding: 12px;
+    font-size: 1.1rem;
+    margin-top: 10px;
+}
+
+/* Existing review styles */
+.existing-review {
+    background-color: #f8f9fa;
+    padding: 15px;
+    border-radius: 4px;
+    margin-top: 10px;
+}
+
+.existing-review p {
+    margin: 10px 0;
+    color: #555;
+    line-height: 1.5;
+}
+
+.existing-review strong {
+    color: #333;
+    font-weight: 600;
+}
+
+/* Other reviews section */
+.other-reviews-container {
+    max-width: 800px;
+    margin: 40px auto;
+    padding: 0 20px;
+}
+
+.other-reviews-container h2 {
+    color: #ffffff;
+    margin-bottom: 30px;
+}
+
+.review-card {
+    background-color: #ffffff;
+    border-radius: 8px;
+    padding: 20px;
+    margin-bottom: 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.review-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.reviewer-name {
+    font-weight: 600;
+    color: #333;
+}
+
+.review-date {
+    color: #666;
+    font-size: 0.9rem;
+}
+
+.review-rating {
+    color: #5f0e0e;
+    font-weight: 600;
+    margin-bottom: 10px;
+}
+
+.review-content {
+    color: #555;
+    line-height: 1.6;
+    margin-bottom: 10px;
+}
+
+/* Responsive design */
+@media screen and (max-width: 768px) {
+    .performance-details-container {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .performance-poster {
+        margin-bottom: 20px;
+    }
+
+    .performance-info-card {
+        width: 100%;
+    }
+
+    .review-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 5px;
+    }
 }
 
   

@@ -1,5 +1,6 @@
 class Performance < ApplicationRecord
   has_many :seen_performances
-has_many :users, through: :seen_performances
-has_one_attached :poster
+  has_many :users, through: :seen_performances
+  has_many :reviews
+  has_one_attached :poster
 end

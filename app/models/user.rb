@@ -6,4 +6,5 @@ class User < ApplicationRecord
 
   has_many :seen_performances
   has_many :performances, through: :seen_performances
+  has_many :reviews
 end
