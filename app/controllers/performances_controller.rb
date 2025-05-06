@@ -23,9 +23,10 @@ class PerformancesController < ApplicationController
 
     # Meklēšana pēc nosaukuma, teātra vai apraksta
     if @search.present?
+      search_query = "%#{@search.downcase}%"
       @performances = @performances.where(
-        "title ILIKE :q OR theater ILIKE :q OR description ILIKE :q",
-        q: "%#{@search}%"
+        "LOWER(title) LIKE :q OR LOWER(theater) LIKE :q OR LOWER(description) LIKE :q",
+        q: search_query
       )
     end
   end
