@@ -44,7 +44,7 @@ rails db:create
 rails db:migrate
 rails db:seed
 ```
-NOTICE! Datubāzē jābūt tieši 10 velo (ar bildi katram), ja, izveidojot datubāzi, tās failā dati neatbilst šim nosacījumam, datubāzes izveides procesā ir bijuši traucējumi. Var manuāli izdzēst development.sqlite3 failu un atkārtot komandas.
+NOTICE! Datubāzē jābūt tieši 5 izrādēm (ar bildi katram), ja, izveidojot datubāzi, tās failā dati neatbilst šim nosacījumam, datubāzes izveides procesā ir bijuši traucējumi. Var manuāli izdzēst development.sqlite3 failu un atkārtot komandas.
 
 ### 5. Startē projektu
 ```bash
@@ -55,12 +55,6 @@ Projekts būs pieejams [http://localhost:3000](http://localhost:3000).
 
 Ja uz Windows netiek izmantota Windows Linux Subsistēma, terminālis jāatver kā administratoram, lai būtu visas nepieciešamas tiesības.
 
-
-# Par WebAplikāciju
-
-Šajā WebAplikācijā nereģistrējies lietotājs var apskatīties visus pieejamos velosipēdus gan konkrētajā dienā, gan sevis izvēlētā datuma intervālā. Lai rezervētu velo, lietotājam nepieciešamas reģistrēties vai ieiet jau izveidotā  profilā. Lietotājs var aplūkot savas rezervācijas uzspiežot pogu "My rentals" un turpat tās arī atteikt/dzēst.
-
-PS. Šajā projektā bildes katram velo tiek glabātas izstrādes vidē, jo pieejami tikai 10 velo. Ja velo skaits augtu, efektīvāk būtu tās glabāt mākonī.
 
 
 
