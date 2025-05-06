@@ -15,7 +15,7 @@ body {
 .header {
   overflow: hidden;
   background-color: #1f2123;
-  padding: 20px 10px;
+  padding: 10px 10px;
 }
 
 .header a {
@@ -32,9 +32,17 @@ body {
 .header a.logo {
   font-size: 50px;
   font-weight: bold;
-  text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5); 
+  text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  gap: 10px;
 }
 
+.logo-image {
+  height: 70px;
+  width: auto;
+  border-radius: 4px;
+}
 
 .header a.active {
   margin-right: 10px;
