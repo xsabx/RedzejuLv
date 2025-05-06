@@ -162,11 +162,18 @@
 
 /* Performance info card styles */
 .performance-info-card {
+    flex: 1;
     background-color: #ffffff;
     padding: 20px;
-    margin: 20px auto;
-    max-width: 600px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     text-align: left;
+    min-width: 300px;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    overflow: hidden;
+    box-sizing: border-box;
 }
 
 .performance-info-card h2 {
@@ -212,69 +219,6 @@
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
-/* Performance info card styles */
-.performance-info-card {
-    flex: 1;
-    background-color: #ffffff;
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    text-align: left;
-    min-width: 300px;
-}
-
-.performance-info-card h2 {
-    color: #333;
-    margin-top: 0;
-    margin-bottom: 15px;
-    font-size: 1.8rem;
-}
-
-.performance-info-card p {
-    margin: 10px 0;
-    color: #555;
-    line-height: 1.5;
-}
-
-.performance-info-card strong {
-    color: #333;
-    font-weight: 600;
-}
-
-/* Seen date form styles */
-.seen-date-form {
-    margin: 15px 0;
-}
-
-.seen-date-form .form-group {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    gap: 15px;
-    margin-bottom: 20px;
-    width: 100%;
-}
-
-.seen-date-form label {
-    color: #333;
-    font-weight: 600;
-    font-size: 1.1rem;
-    white-space: nowrap;
-}
-
-.seen-date-form .form-control {
-    width: 200px;
-    padding: 8px;
-    border: 1px solid #dee2e6;
-    border-radius: 4px;
-}
-
-.seen-date-form .btn-primary {
-    margin: 0;
-    padding: 8px 16px;
-    height: 38px;
-}
-
 /* Review section styles */
 .review-section {
     margin-top: 30px;
@@ -284,6 +228,8 @@
     flex-direction: column;
     align-items: center;
     width: 100%;
+    box-sizing: border-box;
+    max-width: 100%;
 }
 
 .review-section h3 {
@@ -301,6 +247,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    box-sizing: border-box;
 }
 
 .review-section .form-group {
